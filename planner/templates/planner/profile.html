@@ -1,0 +1,33 @@
+<h1>{{ user }}</h1>
+{{user.motto}}
+<p>Note list:</p>
+{% if user.note_set.all %}
+  {% for note in user.note_set.all %}
+    <li>
+      <a href="{% url 'planner:note_detail' user.slug note.id %}">
+        {{note}}
+      </a>
+    </li>
+  {% endfor %}
+{% else %}
+  <p>No notes have been made</p>
+{% endif %}
+
+
+<button type="button">
+  <a href="{% url 'planner:new_note' user.slug %}">
+    Create Note
+  </a>
+</button>
+
+<button>
+  <a href="{% url 'planner:userselect' %}">
+    Return to user select
+  </a>
+</button>
+
+<button>
+  <a href="{% url 'planner:calendar' user.slug year month %}">
+    Calendar
+  </a>
+</button>

@@ -1,0 +1,30 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+
+<dl>
+  <dt>
+    {{note.title}}
+  </dt>
+  <dd>
+    {{note.message}}
+  </dd>
+  <dt>
+    Until {{note.expr_date}}
+  </dt>
+  <dt>
+    Priority: {{note.priority}}
+  </dt>
+</dl>
+
+<button type="button">
+  <a href="{% url 'planner:del_note' note.user.slug note.id %}">
+    Delete
+  </a>
+</button>
+
+<button>
+  <a href = "{% url 'planner:profile' note.user.slug %}">
+    Return
+  </a>
+</button>

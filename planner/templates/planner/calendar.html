@@ -1,0 +1,42 @@
+{% load calendar %}
+
+<table width="100%">
+  <tr>
+    <td width="20%" align="left">
+      &lt;&lt;
+      <a href="{% url 'planner:calendar' slug year_before_this month %}">
+        {{month_name}} {{year_before_this}}
+      </a>
+    </td>
+    <td width="20%" align="left">
+      &lt;&lt;
+      <a href="{% url 'planner:calendar' slug prev_year prev_month %}">
+        {{prev_month_name}} {{prev_year}}
+      </a>
+    </td>
+    <td width="20%" align="center">
+      <a>
+        Today
+      </a>
+    </td>
+    <td width="20%" align="right">
+      <a href="{% url 'planner:calendar' slug next_year next_month %}">
+        {{next_month_name}} {{next_year}}
+      </a>
+      &gt;&gt;
+    </td>
+    <td width="20%" align="right">
+      <a href="{% url 'planner:calendar' slug year_after_this month %}">
+        {{month_name}} {{year_after_this}}
+      </a> &gt;&gt;
+    </td>
+  </tr>
+</table>
+<div id="calendar">
+	{% note_calendar year month note_list %}
+</div>
+<button>
+  <a href="{% url 'planner:profile' slug %}">
+    Return to profile
+  </a>
+</button>
